@@ -11,8 +11,9 @@ const products = [
   { category: "Llar", price: 199.99, name: "Aspiradora" },
 ];
 
-const quantityInput = document.getElementById("quantity");
+const quantitiInput = document.getElementById("quantity");
 const productInput = document.getElementById("product");
+const priceInput = document.getElementById("price");
 
 function addProductsToSelect() {
   // Obtenim el selector del DOM
@@ -21,28 +22,21 @@ function addProductsToSelect() {
   option.value = "";
 
   // Obtenim els productes
-
   // Creem les opcions del selector
   products.forEach((product) => {
     const option = document.createElement("option");
-    option.value = product.name;
+    option.value = product.price;
     option.text = product.name;
-    option.hidden = product.price;
     select.appendChild(option);
   });
-};
+}
 
 function calculatePricePerQuantity() {
-  const quantity = quantityInput.value;
-
-  const product = productInput.value;
-  const productPrice = productInput.hidden;
-
-  
-} 
+  priceInput.value = productInput.value * quantitiInput.value;
+}
 
 // EventListeners... CHANGE
-quantityInput.addEventListener("change", function (e) {
+quantitiInput.addEventListener("change", function (e) {
   calculatePricePerQuantity();
 });
 

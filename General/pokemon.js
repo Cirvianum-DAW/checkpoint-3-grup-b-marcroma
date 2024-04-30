@@ -26,20 +26,52 @@ async function getPokemonInfo(id) {
   try {
     console.log(data);
 
-    // data.map((e) => ({
-    //   id: e.id,
-    //   name: e.name,
-    //   height: e.height,
-    //   weight: e.weight,
-    //   abilities: e.abilities,
-    //   sprites: e.sprites,
-    // }));
+    const abilities = data.abilities.map((e) => {
+      return e.ability.name;
+    });
 
-    console.log(data);
-    return data;
+    const sprites = data.sprites;
+
+    for (const sprite in sprites) {
+      let spriteURL = sprites[sprite];
+    }
+
+    const pokemon = {
+      id: data.id,
+      name: data.name,
+      height: data.height,
+      weight: data.weight,
+      abilitats: abilities,
+      sprites: sprites,
+    };
+
+    console.log(pokemon);
+
+    return pokemon;
   } catch (error) {
     console.error("ERROR: ", error);
   }
 }
 
-getPokemonInfo(1);
+async function displayPokemonInfo(id) {
+
+  // Esperem a que la funció ens retorni la informació del Pokemon que correspon a l'ID
+  const data = await getPokemonInfo(id);
+
+  const name = document.getElementById("name");
+  name.innerHTML = `Name: ${data.name}`;
+
+  const height = document.getElementById("height");
+  height.innerHTML = `Height: ${data.height}`;
+
+  const weight = document.getElementById("weight");
+  weight.innerHTML = `Weight: ${data.weight}`;
+
+  const abilities = document.getElementById("abilities");
+  abilities.innerHTML = `Abilities: ${data.abilitats}`;
+
+  const img = document.getElementById("sprite");
+  img.src = Object.values(data.sprites)[4];
+}
+
+displayPokemonInfo(3);
