@@ -78,6 +78,15 @@ async function displayPokemonInfo(id) {
   // Seleccionem el div que ja existeix dins l'HTML
   const abilities = document.getElementById("abilities");
 
+  // Netejem el que hi havía abans...
+  abilities.innerHTML = "";
+
+  // Creem el títol
+  const h3 = document.createElement("h3");
+  h3.innerHTML = "Abilities";
+  h3.classList.add("text-lg", "font-bold", "mb-2");
+  abilities.appendChild(h3);
+
   // Creem l'element ul que contindra les abilities.
   const ul = document.createElement("ul");
 
@@ -111,18 +120,46 @@ async function displayPokemonInfo(id) {
 }
 
 // Cridem a la funció per mostrar la informació del Pokemon a la pàgina web.
-displayPokemonInfo(430);
+// displayPokemonInfo(430);
 
 // INPUT D'USUARI PER BUSCAR UN POKEMON ===
-
 // Sellecionem la card on hi ha la info del Pokemon.
 const card = document.getElementById("pokemon");
 
+// Creem el form que contindrà l'input i el botó.
+const form = document.createElement("form");
+card.appendChild(form);
+// ===
+
+
 // Creem l'input text i el fem maco...
 const idInput = document.createElement("input");
-idInput.placeholder = "Search Pokemon by ID.";
+idInput.id = "idInput";
+idInput.placeholder = "Search Pokemon by ID...";
 idInput.classList.add("w-full", "border", "p-2", "rounded");
 
 // Inserim l'input a la card amb l'info del Pokemon.
-card.appendChild(idInput);
+form.appendChild(idInput)
+// ===
+
+// BOTÓ D'USUARI PER BUSCAR UN POKEMON ===
+const button = document.createElement("button");
+button.innerHTML = "Search";
+button.classList.add("border", "p-1", "px-4", "rounded", "bg-green-500", "text-white", "mt-2")
+form.appendChild(button);
+// ===
+
+// EVENTLISTENER DEL FORM ===
+// Quan el form detecti el submit del botó...
+form.addEventListener('submit', function (e) {
+
+  // Evitem que es refresqui la pàgina.
+  e.preventDefault();
+
+  // Obtenim l'ID del Pokemon de l'input de l'usuari.
+  const idPokemon = document.getElementById("idInput").value;
+
+  // Cridem el mètode amb la ID que ha introduït l'usuari com a paràmetre.
+  displayPokemonInfo(idPokemon);
+})
 // ===
