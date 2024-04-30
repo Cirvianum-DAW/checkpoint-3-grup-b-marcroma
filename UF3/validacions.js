@@ -37,8 +37,10 @@ function validateName() {
   removeExistingError(nameInput);
 
   // Validació del nom...
+
+  // Guardem el valor de l'input del name
   const name = nameInput.value;
-  const nameRegex = "/[0-9]/";
+  // const nameRegex = "/[0-9]/";
 
   console.log(name);
 
@@ -56,6 +58,7 @@ function validateName() {
 function validateSurname() {
   removeExistingError(surnameInput);
 
+  // Guardem el valor de l'input del surname
   const surname = surnameInput.value;
 
   console.log(surname);
@@ -80,7 +83,7 @@ function validateEmail() {
   console.log(email);
 
   // Comprovem que l'email contingui una @ i un .
-  if (!email.match(emailRegex)) {
+  if (!email.match(emailRegex)) { // Si no és correcte...
     displayError(emailInput, "L'Email no és vàlid.");
     return;
   } else {
@@ -92,14 +95,15 @@ function validateEmail() {
 function validateAge() {
   removeExistingError(ageInput);
 
+  // Guardem el valor de l'input de l'edat.
   const age = ageInput.value;
 
-  // Si l'usuari és menor
+  // Si l'usuari és menor...
   if (age < 18) {
     displayError(ageInput, "L'usuari ha de ser major d'edat.");
     return;
   } else {
-    // Si és major...
+    // Si és major... OK
     removeExistingError(ageInput);
   }
 }
@@ -107,6 +111,7 @@ function validateAge() {
 function validateMessage() {
   removeExistingError(messageInput);
 
+  // Guardem el valor de l'input del message.
   const message = messageInput.value;
 
   // Si el missatge no té entre 10 i 200 caràcters...
@@ -116,7 +121,7 @@ function validateMessage() {
       "El missatge ha de tenir entre 10 i 200 caràcters."
     );
     return;
-  } else {
+  } else { // Si és correcte... OK
     removeExistingError(messageInput);
   }
 }
@@ -124,6 +129,7 @@ function validateMessage() {
 function validateQuantity() {
   removeExistingError(quantityInput);
 
+  // Guardem el valor de la quantitat de productes.
   const quantity = quantityInput.value;
 
   // Si la quantitat seleccionada és menys que 1 o més que 10...
@@ -136,6 +142,7 @@ function validateQuantity() {
   removeExistingError(quantityInput);
 }
 
+// Funció que s'executa quan s'apreta el botó per fer Submit del formulari.
 function validateSubmit() {
   validateQuantity();
 }
