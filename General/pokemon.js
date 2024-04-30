@@ -156,7 +156,7 @@ form.addEventListener('submit', function (e) {
   // Evitem que es refresqui la pàgina.
   e.preventDefault();
 
-  // Obtenim l'ID del Pokemon de l'input de l'usuari.
+  // Obtenim l'ID del Pokemon que ha introduit l'usuari a l'input.
   const idPokemon = document.getElementById("idInput").value;
 
   // Cridem el mètode amb la ID que ha introduït l'usuari com a paràmetre.
