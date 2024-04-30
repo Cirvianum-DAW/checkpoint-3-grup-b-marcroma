@@ -27,10 +27,24 @@ function displayError(input, message) {
 
 function validateName() {
   removeExistingError(nameInput);
-  // Validació del nom...
 
-  // Si no és vàlid...
-  displayError(nameInput, "El nom no és vàlid");
+  // Validació del nom...
+  const name = nameInput.value;
+  const nameRegex = "/[0-9]/";
+
+  console.log(name);
+
+  if (name.length < 3 || (name.length > 55 || name.match(nameRegex))) {
+    // Si no és vàlid...
+
+    displayError(nameInput, "El nom no és vàlid.");
+    return;
+  } else {
+    removeExistingError(nameInput);
+  }
 }
 
 // addEventListeners...
+nameInput.addEventListener("input", function (e) {
+  validateName();
+});

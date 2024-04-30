@@ -23,24 +23,23 @@ async function getPokemonData(path) {
 async function getPokemonInfo(id) {
   const data = await getPokemonData(`pokemon/${id}`);
 
-  console.log(data);
-
   try {
-    data.map((e) => ({
-      id: e.id,
-      name: e.name,
-      height: e.height,
-      weight: e.weight,
-      abilities: e.abilities.map((i) => {
-        
-      }),
-      sprites: e.sprites,
-    }));
+    console.log(data);
 
+    // data.map((e) => ({
+    //   id: e.id,
+    //   name: e.name,
+    //   height: e.height,
+    //   weight: e.weight,
+    //   abilities: e.abilities,
+    //   sprites: e.sprites,
+    // }));
+
+    console.log(data);
     return data;
   } catch (error) {
     console.error("ERROR: ", error);
   }
 }
 
-console.log(getPokemonInfo(1));
+getPokemonInfo(1);
