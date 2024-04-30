@@ -15,6 +15,7 @@ async function getPokemonData(path) {
   }
 
   // Si no OK
+  alert("There was a problem with the request.");
   throw new Error("Something went wrong.");
 }
 
